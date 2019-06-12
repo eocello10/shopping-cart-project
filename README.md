@@ -23,3 +23,7 @@ matching_product  = [p for p in products if p["id"] == Selected_ID] - This is a 
 - we are comparing different data types - Integer of entering products ID and a string version of 9. Have to make them match in order to produce a proper result
 
 print (matching_product)
+
+print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+
+- This concantenantion allows us to combine Text with name of product and with the price of product. Hint: Be careful as have to ensure all of these are same data type (i.e. string)
