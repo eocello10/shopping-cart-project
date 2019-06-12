@@ -39,8 +39,13 @@ products = [
 
 
 #consider using a loop - This allows us to get the question and input as much as possible
+print ("Around the Corner Market")
+print ("-------------------------")
+print ("WEB: www.ATCmkt.com")
+print ("-------------------------")
 now = datetime.datetime.now()
 print(str(now))
+print ("-------------------------")
 total_price = 0
 selected_ids = []
 while True:
@@ -91,7 +96,7 @@ tax = (total_price*.0875)
 print (total_price + tax)
 
 
-#price_usd = " (${0:.2f})".format(["price"])
+#price_usd = " (${0:.2f})".format(p["price"])
 
 #A grocery store name of your choice - Print name
 #A grocery store phone number and/or website URL and/or address of choice - Print Url

@@ -40,5 +40,8 @@ print("Selected Product: " + matching_product["name"] + " " + str(matching_produ
 - This concantenantion allows us to combine Text with name of product and with the price of product. Hint: Be careful as have to ensure all of these are same data type (i.e. string)
 
 - You need to keep running total within loop  - To do this define variable (i.e. total_price) above loop and within loo. After we find matching product we can accumulate value of total price and keep adding product price to total until user selects done
+- Do these steps last:
+Print Grocery name, Web address, and the date/time receipt was created (use link to module below)
+https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/modules/datetime.md
 
 IMPORTANT: Continue to test your code to ensure proper results are being produced. You can either automate this or run it manually.
