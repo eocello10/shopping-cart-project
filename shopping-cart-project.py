@@ -37,6 +37,7 @@ products = [
 
 
 #consider using a loop - This allows us to get the question and input as much as possible
+total_price = 0
 
 while True:
     Selected_ID = input("Please enter a product ID:")
@@ -45,13 +46,14 @@ while True:
     else:
         matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
         matching_product = matching_products[0]
+        total_price = total_price + matching_product ["price"]
         print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
 #print(matching_product)
 #print(type(matching_product))
 
 
 
-#price_usd = " (${0:.2f})".format(p["price"])
+
 #this illustrtes we are looking for one product. Not the entire list
 
 # list comprehension will return a list
@@ -63,9 +65,15 @@ while True:
 
 #print(Selected_ID)
 #print(type(Selected_ID)) - This value is a string version of the number ID input
+
+
 #
 #Program outputs - Receipt
 #
+
+#need to keep running total within loop  - define variable above loop and within loop after we find matching product we can accumulate value of total price and keep adding product price to total
+print("Total Price: " + str(total_price))
+#price_usd = " (${0:.2f})".format(p["price"]) - Need to format/define p - check groceries
 
 #A grocery store name of your choice
 #A grocery store phone number and/or website URL and/or address of choice
