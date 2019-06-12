@@ -31,7 +31,15 @@ print (products)
 
 # TODO: write some Python code here to produce the desired output
 
-
+#
+#Clerk inputs
+#
+Selected_ID = input("Please enter a product ID:")
+print(Selected_ID)
+#print(type(Selected_ID)) - This value is a string version of the number ID input
+#
+#Program outputs - Receipt
+#
 
 #A grocery store name of your choice
 #A grocery store phone number and/or website URL and/or address of choice
