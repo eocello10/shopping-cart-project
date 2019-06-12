@@ -27,3 +27,5 @@ print (matching_product)
 print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
 
 - This concantenantion allows us to combine Text with name of product and with the price of product. Hint: Be careful as have to ensure all of these are same data type (i.e. string)
+
+IMPORTANT: Continue to test your code to ensure proper results are being produced. You can either automate this or run it manually.

@@ -34,13 +34,22 @@ products = [
 #
 #Clerk inputs
 #
-Selected_ID = input("Please enter a product ID:")
-matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
-matching_product = matching_products[0]
-print(matching_product)
-print(type(matching_product))
 
-print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+
+#consider using a loop - This allows us to get the question and input as much as possible
+
+while True:
+    Selected_ID = input("Please enter a product ID:")
+    if Selected_ID == "Done":
+        break
+    else:
+        matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
+        matching_product = matching_products[0]
+        print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+#print(matching_product)
+#print(type(matching_product))
+
+
 
 #price_usd = " (${0:.2f})".format(p["price"])
 #this illustrtes we are looking for one product. Not the entire list
