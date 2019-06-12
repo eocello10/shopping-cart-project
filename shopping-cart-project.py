@@ -38,16 +38,18 @@ products = [
 
 #consider using a loop - This allows us to get the question and input as much as possible
 total_price = 0
-
+selected_ids = []
 while True:
-    Selected_ID = input("Please enter a product ID:")
+    Selected_ID = input("Please enter a product ID or Donec if there are no more products:")
     if Selected_ID == "Done":
         break
     else:
-        matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
-        matching_product = matching_products[0]
-        total_price = total_price + matching_product ["price"]
-        print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+        #matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
+        #matching_product = matching_products[0]
+        #total_price = total_price + matching_product ["price"]
+        #print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+        selected_ids.append(Selected_ID)
+
 #print(matching_product)
 #print(type(matching_product))
 
@@ -72,8 +74,15 @@ while True:
 #
 
 #need to keep running total within loop  - define variable above loop and within loop after we find matching product we can accumulate value of total price and keep adding product price to total
+#rint (selected_ids)
+for Selected_ID in selected_ids:
+    matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product ["price"]
+    print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+
 print("Total Price: " + str(total_price))
-#price_usd = " (${0:.2f})".format(p["price"]) - Need to format/define p - check groceries
+####price_usd = " (${0:.2f})".format(p["price"]) - Need to format/define p - check groceries
 
 #A grocery store name of your choice
 #A grocery store phone number and/or website URL and/or address of choice
