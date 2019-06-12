@@ -49,7 +49,7 @@ print ("-------------------------")
 total_price = 0
 selected_ids = []
 while True:
-    Selected_ID = input("Please enter a product ID or Donec if there are no more products:")
+    Selected_ID = input("Please enter a product ID or Done if there are no more products:")
     if Selected_ID == "Done":
         break
     else:
@@ -93,7 +93,10 @@ for Selected_ID in selected_ids:
 #print("Total Price: " + str(total_price))
 
 tax = (total_price*.0875)
-print (total_price + tax)
+print ("Subtotal: " + str(total_price))
+print ("NYC Sales Tax: " + str(tax))
+print ("Total: " + str(total_price + tax))
+
 
 
 #price_usd = " (${0:.2f})".format(p["price"])
