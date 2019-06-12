@@ -26,7 +26,7 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print (products)
+#print (products)
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
@@ -35,7 +35,20 @@ print (products)
 #Clerk inputs
 #
 Selected_ID = input("Please enter a product ID:")
-print(Selected_ID)
+matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
+matching_product = matching_products[0]
+print(matching_product)
+print(type(matching_product))
+#this illustrtes we are looking for one product. Not the entire list
+
+# list comprehension will return a list
+# # this is because we want the ID selected to match an ID in our product list
+#print (matching_products)
+
+# we are comparing different data types - Integer of entering products ID and a string version of 9. These do not match
+#print (type(matching_product))
+
+#print(Selected_ID)
 #print(type(Selected_ID)) - This value is a string version of the number ID input
 #
 #Program outputs - Receipt
