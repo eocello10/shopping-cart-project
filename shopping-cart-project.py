@@ -39,6 +39,10 @@ matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)]
 matching_product = matching_products[0]
 print(matching_product)
 print(type(matching_product))
+
+print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+
+#price_usd = " (${0:.2f})".format(p["price"])
 #this illustrtes we are looking for one product. Not the entire list
 
 # list comprehension will return a list
