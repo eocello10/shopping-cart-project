@@ -49,7 +49,7 @@ while True:
         #total_price = total_price + matching_product ["price"]
         #print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
         selected_ids.append(Selected_ID)
-
+### NEED TO ADD SOMETHING THAT INVALIDATES ANYTHING BESIDES 1-20 AND DONE - Look at rock paper scissors exercise
 #print(matching_product)
 #print(type(matching_product))
 
@@ -81,8 +81,13 @@ for Selected_ID in selected_ids:
     total_price = total_price + matching_product ["price"]
     print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
 
-print("Total Price: " + str(total_price))
-####price_usd = " (${0:.2f})".format(p["price"]) - Need to format/define p - check groceries
+#print("Total Price: " + str(total_price))
+
+tax = (total_price*.0875)
+print (total_price + tax)
+
+
+#price_usd = " (${0:.2f})".format(["price"])
 
 #A grocery store name of your choice - Print name
 #A grocery store phone number and/or website URL and/or address of choice - Print Url
