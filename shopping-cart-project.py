@@ -3,6 +3,8 @@
 
 #from pprint import pprint
 
+import datetime
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -37,6 +39,8 @@ products = [
 
 
 #consider using a loop - This allows us to get the question and input as much as possible
+now = datetime.datetime.now()
+print(str(now))
 total_price = 0
 selected_ids = []
 while True:
@@ -49,7 +53,7 @@ while True:
         #total_price = total_price + matching_product ["price"]
         #print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
         selected_ids.append(Selected_ID)
-### NEED TO ADD SOMETHING THAT INVALIDATES ANYTHING BESIDES 1-20 AND DONE - Look at rock paper scissors exercise
+        ### NEED TO ADD SOMETHING THAT INVALIDATES ANYTHING BESIDES 1-20 AND DONE - Look at rock paper scissors exercise
 #print(matching_product)
 #print(type(matching_product))
 
