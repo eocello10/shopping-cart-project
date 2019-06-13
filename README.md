@@ -33,6 +33,7 @@ print (matching_product)
 
 print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
 - At a certain point you will need to remove this as we do not want to print out the select product each time. Rather we need to see this as part of the receipt
+-To format price use the code: '${:,.2f}'.format and this will format any of your prices to two decimals
 
 -Thus, we can move our loop to the display section of our code and create a for Selected_ID in selected_ids: the nthe loop 
     -Create a loop to allow for multiple product IDs to be entered. Must create a break which allows for the loop to end. In our case, use an if statement that if selected_ID = "Done":
@@ -40,6 +41,12 @@ print("Selected Product: " + matching_product["name"] + " " + str(matching_produ
 - This concantenantion allows us to combine Text with name of product and with the price of product. Hint: Be careful as have to ensure all of these are same data type (i.e. string)
 
 - You need to keep running total within loop  - To do this define variable (i.e. total_price) above loop and within loo. After we find matching product we can accumulate value of total price and keep adding product price to total until user selects done
+
+-Prices - Subtotal, Tax, and Total - Need to format using '${:,.2f}'.format'
+    - Subtotal = sum of the total prices of the products
+    - Tax = (total_price*.0875)
+    - Total = Subtotal + Tax 
+
 - Do these steps last:
 Print Grocery name, Web address, and the date/time receipt was created (use link to module below)
 https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/modules/datetime.md

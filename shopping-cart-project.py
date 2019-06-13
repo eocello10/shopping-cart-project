@@ -39,13 +39,7 @@ products = [
 
 
 #consider using a loop - This allows us to get the question and input as much as possible
-print ("Around the Corner Market")
-print ("-------------------------")
-print ("WEB: www.ATCmkt.com")
-print ("-------------------------")
-now = datetime.datetime.now()
-print(str(now))
-print ("-------------------------")
+
 total_price = 0
 selected_ids = []
 while True:
@@ -82,20 +76,33 @@ while True:
 #Program outputs - Receipt
 #
 
+print ("Around the Corner Market")
+print ("-------------------------")
+print ("WEB: www.ATCmkt.com")
+print ("-------------------------")
+now = datetime.datetime.now()
+print(str(now))
+print ("-------------------------")
+
 #need to keep running total within loop  - define variable above loop and within loop after we find matching product we can accumulate value of total price and keep adding product price to total
 #rint (selected_ids)
 for Selected_ID in selected_ids:
     matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
     matching_product = matching_products[0]
     total_price = total_price + matching_product ["price"]
-    print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+    print("Selected Product: " + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
 
 #print("Total Price: " + str(total_price))
 
+
+
 tax = (total_price*.0875)
-print ("Subtotal: " + str(total_price))
-print ("NYC Sales Tax: " + str(tax))
-print ("Total: " + str(total_price + tax))
+print ("-------------------------")
+print ("Subtotal: " + str('${:,.2f}'.format(total_price)))
+print ("NYC Sales Tax: " + str('${:,.2f}'.format((tax))))
+print ("Total: " + str('${:,.2f}'.format(total_price + tax)))# add string format for price
+
+# can def function - right at top
 
 
 
