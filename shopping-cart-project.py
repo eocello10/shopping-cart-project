@@ -43,21 +43,12 @@ products = [
 total_price = 0
 selected_ids = []
 Valid_ids = []
-#clerk_input = input("Please enter a product ID or Done if there are no more products:")
 for i in products:
     Valid_ids.append(i["id"])
 
-####THIS IS IMPORTANT
-###Look at dougs code for invalid portion
-#for i in products:
- #   id_list.append(i["id"]) #add all ids to ID list
-
- ###can create list say id_list = id list and if not in that list print invalid or if done break
-###ask zach about lowercase code - input.lower()
-
 while True:
     Selected_ID = input("Please enter a product ID or Done if there are no more products:")
-    if Selected_ID == "done": #Think I have to use elif
+    if Selected_ID.lower() == "done": #Think I have to use elif
         break
     while Selected_ID not in str(Valid_ids): # either make an elif or add another break
         print ("Invalid ID. Please enter a valid ID.")
@@ -112,8 +103,8 @@ for Selected_ID in selected_ids:
     matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
     matching_product = matching_products[0]
     total_price = total_price + matching_product ["price"]
-    print("Selected Product: " + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
-
+    print("Selected Products:")
+    print("..." + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
 
 
 tax = (total_price*.0875)
