@@ -42,9 +42,25 @@ products = [
 
 total_price = 0
 selected_ids = []
+Valid_ids = []
+#clerk_input = input("Please enter a product ID or Done if there are no more products:")
+for i in products:
+    Valid_ids.append(i["id"])
+
+####THIS IS IMPORTANT
+###Look at dougs code for invalid portion
+#for i in products:
+ #   id_list.append(i["id"]) #add all ids to ID list
+
+ ###can create list say id_list = id list and if not in that list print invalid or if done break
+###ask zach about lowercase code - input.lower()
+
 while True:
     Selected_ID = input("Please enter a product ID or Done if there are no more products:")
-    if Selected_ID == "Done":
+    if Selected_ID == "done": #Think I have to use elif
+        break
+    while Selected_ID not in str(Valid_ids): # either make an elif or add another break
+        print ("Invalid ID. Please enter a valid ID.")
         break
     else:
         #matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
@@ -55,6 +71,12 @@ while True:
         ### NEED TO ADD SOMETHING THAT INVALIDATES ANYTHING BESIDES 1-20 AND DONE - Look at rock paper scissors exercise
 #print(matching_product)
 #print(type(matching_product))
+
+###NEED TO CREATE LOGIC TO VALIDATE CHOICE### - Should be able to use if loop
+
+#options = matching_products
+#if  matching_product not in options:   
+#    print ("Invalid Selection. Please enter correct ID")
 
 
 
@@ -75,7 +97,7 @@ while True:
 #
 #Program outputs - Receipt
 #
-
+print ("-------------------------")
 print ("Around the Corner Market")
 print ("-------------------------")
 print ("WEB: www.ATCmkt.com")
@@ -85,14 +107,12 @@ print(str(now))
 print ("-------------------------")
 
 #need to keep running total within loop  - define variable above loop and within loop after we find matching product we can accumulate value of total price and keep adding product price to total
-#rint (selected_ids)
+#print (selected_ids)
 for Selected_ID in selected_ids:
     matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
     matching_product = matching_products[0]
     total_price = total_price + matching_product ["price"]
     print("Selected Product: " + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
-
-#print("Total Price: " + str(total_price))
 
 
 
@@ -101,6 +121,8 @@ print ("-------------------------")
 print ("Subtotal: " + str('${:,.2f}'.format(total_price)))
 print ("NYC Sales Tax: " + str('${:,.2f}'.format((tax))))
 print ("Total: " + str('${:,.2f}'.format(total_price + tax)))# add string format for price
+print ("-------------------------")
+print ("Thank you! Please come again soon!")
 
 # can def function - right at top
 

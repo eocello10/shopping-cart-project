@@ -2,17 +2,51 @@
 (Project Description)
 Create a receipt based on products, price, and produce the total price of the shopping cart
 
-#Installation
+#Installation/Repo Setup
 Required to clone or download repository created from https://github.com/eocello10/shopping-cart-project, then navigate into project repository by entering code into command line:
 '''sh
 cd shopping-cart-project #need to copy folder on local drive
 '''
+Insert product list based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017 as seen below 
+products = [
+    {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
+    {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
+    {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
+    {"id":4, "name": "Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce", "department": "frozen", "aisle": "frozen meals", "price": 6.99},
+    {"id":5, "name": "Green Chile Anytime Sauce", "department": "pantry", "aisle": "marinades meat preparation", "price": 7.99},
+    {"id":6, "name": "Dry Nose Oil", "department": "personal care", "aisle": "cold flu allergy", "price": 21.99},
+    {"id":7, "name": "Pure Coconut Water With Orange", "department": "beverages", "aisle": "juice nectars", "price": 3.50},
+    {"id":8, "name": "Cut Russet Potatoes Steam N' Mash", "department": "frozen", "aisle": "frozen produce", "price": 4.25},
+    {"id":9, "name": "Light Strawberry Blueberry Yogurt", "department": "dairy eggs", "aisle": "yogurt", "price": 6.50},
+    {"id":10, "name": "Sparkling Orange Juice & Prickly Pear Beverage", "department": "beverages", "aisle": "water seltzer sparkling water", "price": 2.99},
+    {"id":11, "name": "Peach Mango Juice", "department": "beverages", "aisle": "refrigerated", "price": 1.99},
+    {"id":12, "name": "Chocolate Fudge Layer Cake", "department": "frozen", "aisle": "frozen dessert", "price": 18.50},
+    {"id":13, "name": "Saline Nasal Mist", "department": "personal care", "aisle": "cold flu allergy", "price": 16.00},
+    {"id":14, "name": "Fresh Scent Dishwasher Cleaner", "department": "household", "aisle": "dish detergents", "price": 4.99},
+    {"id":15, "name": "Overnight Diapers Size 6", "department": "babies", "aisle": "diapers wipes", "price": 25.50},
+    {"id":16, "name": "Mint Chocolate Flavored Syrup", "department": "snacks", "aisle": "ice cream toppings", "price": 4.50},
+    {"id":17, "name": "Rendered Duck Fat", "department": "meat seafood", "aisle": "poultry counter", "price": 9.99},
+    {"id":18, "name": "Pizza for One Suprema Frozen Pizza", "department": "frozen", "aisle": "frozen pizza", "price": 12.50},
+    {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
+    {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
+] 
 
-#Usage
-Copy and paste products into VS Text code then run the program:
-'''py
+#Installation/Usage
+reate and activate a new Anaconda virtual environment:
+
+conda create -n shopping-env python=3.7 # (first time only)
+conda activate shopping-env
+From within the virtual environment, install the pytest package:
+
+# NOTE: we won't need pytest until/unless addressing the optional "Automated Testing" challenge,
+# so you can feel free to skip this now and return later...
+
+pip install pytest
+
+After complete you can begin to run the code in your command line by copying and pasting the location of your shopping cart repo on your local drive and open in VS Text code then run the program:
+
 python shopping_cart-project.py
-'''
+
 
 ##Requirements
 total_price = 0 - Starting point 
@@ -23,7 +57,7 @@ while True:
         break
     else:
         selected_ids.append(Selected_ID) - Create an append...
- - This code asks for user to input a value. The goal is to have user input a value and produce a result.
+ - This code asks for user to input a value. The goal is to have user input a valid value and produce a result. This code will not allow invalid results(produce a message when this happens). When the user inputs, done, the code will produce a break and produce the receipt
 
 matching_product  = [p for p in products if p["id"] == Selected_ID] - This is a list comprehension that is required to be generated in order to pull from our products
 
