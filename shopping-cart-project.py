@@ -88,14 +88,14 @@ while True:
 #
 #Program outputs - Receipt
 #
-print ("-------------------------")
+print ("--------------------------------------")
 print ("Around the Corner Market")
-print ("-------------------------")
-print ("WEB: www.ATCmkt.com")
-print ("-------------------------")
+print ("www.ATCmkt.com")
+print ("--------------------------------------")
 now = datetime.datetime.now()
-print(str(now))
-print ("-------------------------")
+print("Checkout Time: " + now.strftime("%b %d %Y %H:%M:%S"))
+print ("--------------------------------------")
+print("Selected Products:")
 
 #need to keep running total within loop  - define variable above loop and within loop after we find matching product we can accumulate value of total price and keep adding product price to total
 #print (selected_ids)
@@ -103,16 +103,15 @@ for Selected_ID in selected_ids:
     matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
     matching_product = matching_products[0]
     total_price = total_price + matching_product ["price"]
-    print("Selected Products:")
-    print("..." + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
+    print("... " + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
 
 
 tax = (total_price*.0875)
-print ("-------------------------")
+print ("--------------------------------------")
 print ("Subtotal: " + str('${:,.2f}'.format(total_price)))
 print ("NYC Sales Tax: " + str('${:,.2f}'.format((tax))))
 print ("Total: " + str('${:,.2f}'.format(total_price + tax)))# add string format for price
-print ("-------------------------")
+print ("--------------------------------------")
 print ("Thank you! Please come again soon!")
 
 # can def function - right at top
