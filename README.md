@@ -84,5 +84,8 @@ print("Selected Product: " + matching_product["name"] + " " + str(matching_produ
 - Do these steps last:
 Print Grocery name, Web address, and the date/time receipt was created (use link to module below)
 https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/modules/datetime.md
+- To format and make it AM,PM or more the month instead of numbers after you import datetime use the below:
+    - now = datetime.datetime.now()
+    - print("Checkout Time: " + now.strftime('%b %d %Y %H:%M %p')) - The b,d,Y gives you the month spelled out, the date, and year - The H,M, p gives you the hour and minute along with the AM or PM. 
 
 IMPORTANT: Continue to test your code to ensure proper results are being produced. You can either automate this or run it manually.

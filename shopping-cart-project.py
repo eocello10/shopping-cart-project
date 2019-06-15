@@ -93,7 +93,7 @@ print ("Around the Corner Market")
 print ("www.ATCmkt.com")
 print ("--------------------------------------")
 now = datetime.datetime.now()
-print("Checkout Time: " + now.strftime("%b %d %Y %H:%M:%S"))
+print("Checkout Time: " + now.strftime('%b %d %Y %H:%M %p'))
 print ("--------------------------------------")
 print("Selected Products:")
 
@@ -104,7 +104,7 @@ for Selected_ID in selected_ids:
     matching_product = matching_products[0]
     total_price = total_price + matching_product ["price"]
     print("... " + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
-
+    
 
 tax = (total_price*.0875)
 print ("--------------------------------------")
