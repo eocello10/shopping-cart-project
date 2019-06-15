@@ -50,14 +50,24 @@ python shopping_cart-project.py
 
 ##Requirements
 total_price = 0 - Starting point 
-elected_ids = []
+Selected_ids = []
+Valid_ids = []
+for i in products:
+    Valid_ids.append(i["id"])
+    - Use the for loop in order to make this valid_ids item more dynamic in the below code. Allows me to determine whether something is invalid or not
 while True:
     Selected_ID = input("Please enter a product ID or Donec if there are no more products:")
-    if Selected_ID == "Done":
+    if Selected_ID.lower() == "done": 
+        - This allows me to esnure that if any capital letters are written in done (i.e. DONE or Done) the code will recognize this is done and break to produce the receipt
+        break
+    while Selected_ID not in str(Valid_ids): # either make an elif or add another break
+        print ("Invalid ID. Please enter a valid ID.")
         break
     else:
-        selected_ids.append(Selected_ID) - Create an append...
+        selected_ids.append(Selected_ID) - Create an append..
  - This code asks for user to input a value. The goal is to have user input a valid value and produce a result. This code will not allow invalid results(produce a message when this happens). When the user inputs, done, the code will produce a break and produce the receipt
+ - Thus, we can move our loop to the display section of our code and create a for Selected_ID in selected_ids: the nthe loop 
+    -Create a loop to allow for multiple product IDs to be entered. Must create a break which allows for the loop to end. In our case, use an if statement tas seen in above code
 
 matching_product  = [p for p in products if p["id"] == Selected_ID] - This is a list comprehension that is required to be generated in order to pull from our products
 
@@ -69,12 +79,15 @@ print("Selected Product: " + matching_product["name"] + " " + str(matching_produ
 - At a certain point you will need to remove this as we do not want to print out the select product each time. Rather we need to see this as part of the receipt
 -To format price use the code: '${:,.2f}'.format and this will format any of your prices to two decimals
 
--Thus, we can move our loop to the display section of our code and create a for Selected_ID in selected_ids: the nthe loop 
-    -Create a loop to allow for multiple product IDs to be entered. Must create a break which allows for the loop to end. In our case, use an if statement that if selected_ID = "Done":
-
 - This concantenantion allows us to combine Text with name of product and with the price of product. Hint: Be careful as have to ensure all of these are same data type (i.e. string)
 
-- You need to keep running total within loop  - To do this define variable (i.e. total_price) above loop and within loo. After we find matching product we can accumulate value of total price and keep adding product price to total until user selects done
+- You need to keep running total within loop  - To do this define variable (i.e. total_price) above loop and within loop. After we find matching product we can accumulate value of total price and keep adding product price to total until user selects done
+#Code:
+for Selected_ID in selected_ids:
+    matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product ["price"]
+    print("... " + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
 
 -Prices - Subtotal, Tax, and Total - Need to format using '${:,.2f}'.format'
     - Subtotal = sum of the total prices of the products
