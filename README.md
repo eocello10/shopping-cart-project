@@ -2,7 +2,7 @@
 (Project Description)
 Create a receipt based on products, price, and produce the total price of the shopping cart
 
-#Installation/Repo Setup
+# Installation/Repo Setup
 - Required to clone or download repository created from https://github.com/eocello10/shopping-cart-project, then navigate into project repository by entering code into command line:
 '''sh
 cd shopping-cart-project #need to copy folder on local drive
@@ -31,15 +31,14 @@ cd shopping-cart-project #need to copy folder on local drive
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] 
 
-#Installation/Usage
+# Installation/Usage
 - Create and activate a new Anaconda virtual environment:
 
 conda create -n shopping-env python=3.7 # (first time only)
 conda activate shopping-env
 From within the virtual environment, install the pytest package:
 
-# NOTE: we won't need pytest until/unless addressing the optional "Automated Testing" challenge,
-# so you can feel free to skip this now and return later...
+- NOTE: we won't need pytest until/unless addressing the optional "Automated Testing" challenge,
 
 pip install pytest
 
@@ -48,7 +47,7 @@ pip install pytest
 python shopping_cart-project.py
 
 
-##Requirements
+# Requirements
 - total_price = 0 - Starting point 
 - Selected_ids = []
 - Valid_ids = []
@@ -80,7 +79,8 @@ python shopping_cart-project.py
 - This concantenantion allows us to combine Text with name of product and with the price of product. Hint: Be careful as have to ensure all of these are same data type (i.e. string)
 
 - You need to keep running total within loop  - To do this define variable (i.e. total_price) above loop and within loop. After we find matching product we can accumulate value of total price and keep adding product price to total until user selects done
-#Code:
+
+# Code:
 - for Selected_ID in selected_ids:
     matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
     matching_product = matching_products[0]
@@ -99,7 +99,7 @@ https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/m
     - now = datetime.datetime.now()
     - print("Checkout Time: " + now.strftime('%b %d %Y %I:%M %p')) - The b,d,Y gives you the month spelled out, the date, and year - The I,M, p gives you the hour and minute b(in a 12 hour format) along with the AM or PM. 
 
-#Email Notification
+# Email Notification
 - Need to create a sendgrid accout/receive an API key. Along with this you must create an env file with the below information
 
 - SENDGRID_API_KEY="API_Key" # use your own API Key!"
@@ -111,7 +111,7 @@ https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/m
 # AUTHENTICATE
 
 - sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY)
-#Load_env is telling code to pull from env folder. we don't want sensitive info in our code
+- Load_env is telling code to pull from env folder. we don't want sensitive info in our code
 
 # COMPILE REQUEST PARAMETERS (PREPARE THE EMAIL)
 
