@@ -101,4 +101,47 @@ https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/m
     - now = datetime.datetime.now()
     - print("Checkout Time: " + now.strftime('%b %d %Y %H:%M %p')) - The b,d,Y gives you the month spelled out, the date, and year - The H,M, p gives you the hour and minute along with the AM or PM. 
 
+#Email Notification
+- Need to create a sendgrid accout/receive an API key. Along with this you must create an env file with the below information
+
+SENDGRID_API_KEY="API_Key" # use your own API Key!"
+MY_EMAIL_ADDRESS="My_email" # use the email address you associated with the SendGrid service
+
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var called 'SENDGRID_API_KEY'")
+MY_EMAIL_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
+
+# AUTHENTICATE
+
+sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY)
+#Load_env is telling code to pull from env folder. we don't want sensitive info in our code
+
+# COMPILE REQUEST PARAMETERS (PREPARE THE EMAIL)
+
+from_email = Email(MY_EMAIL_ADDRESS)
+to_email = Email(MY_EMAIL_ADDRESS)
+subject = "Your Receipt from AMC Market"
+message_text = ("Hello, This is a message from your AMC Market.See below for your receipt. Thank you for shopping at our Market and come again!" + " " + 
+"........." + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])) + " " +
+"Subtotal: " + str('${:,.2f}'.format(total_price)) + ", " + "NYC Sales Tax: " + str('${:,.2f}'.format((tax)) + ", " + "Total: " + str('${:,.2f}'.format(total_price + tax))))
+content = Content("text/plain", message_text)
+mail = Mail(from_email, subject, to_email, content)
+
+# ISSUE REQUEST (SEND EMAIL)
+
+response = sg.client.mail.send.post(request_body=mail.get())
+
+# PARSE RESPONSE
+
+pp = pprint.PrettyPrinter(indent=4)
+
+print("----------------------")
+print("EMAIL")
+print("----------------------")
+print("RESPONSE: ", type(response))
+print("STATUS:", response.status_code) #> 202 means success
+print("HEADERS:")
+pp.pprint(dict(response.headers))
+print("BODY:")
+print(response.body) #> this might be empty. it's ok.)
+
 IMPORTANT: Continue to test your code to ensure proper results are being produced. You can either automate this or run it manually.
