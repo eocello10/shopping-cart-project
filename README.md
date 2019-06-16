@@ -99,7 +99,7 @@ Print Grocery name, Web address, and the date/time receipt was created (use link
 https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/modules/datetime.md
 - To format and make it AM,PM or more the month instead of numbers after you import datetime use the below:
     - now = datetime.datetime.now()
-    - print("Checkout Time: " + now.strftime('%b %d %Y %H:%M %p')) - The b,d,Y gives you the month spelled out, the date, and year - The H,M, p gives you the hour and minute along with the AM or PM. 
+    - print("Checkout Time: " + now.strftime('%b %d %Y %I:%M %p')) - The b,d,Y gives you the month spelled out, the date, and year - The I,M, p gives you the hour and minute b(in a 12 hour format) along with the AM or PM. 
 
 #Email Notification
 - Need to create a sendgrid accout/receive an API key. Along with this you must create an env file with the below information
