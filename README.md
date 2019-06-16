@@ -125,6 +125,7 @@ message_text = ("Hello, This is a message from your AMC Market.See below for you
 "Subtotal: " + str('${:,.2f}'.format(total_price)) + ", " + "NYC Sales Tax: " + str('${:,.2f}'.format((tax)) + ", " + "Total: " + str('${:,.2f}'.format(total_price + tax))))
 content = Content("text/plain", message_text)
 mail = Mail(from_email, subject, to_email, content)
+- As can be seend I utilized the code to produce products/prices in the my message section
 
 # ISSUE REQUEST (SEND EMAIL)
 
