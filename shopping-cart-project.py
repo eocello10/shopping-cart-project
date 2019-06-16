@@ -2,6 +2,14 @@
 # shopping_cart.py
 
 #from pprint import pprint
+import os
+import pprint
+
+from dotenv import load_dotenv
+import sendgrid
+from sendgrid.helpers.mail import * # source of Email, Content, Mail, etc.
+
+load_dotenv()
 
 import datetime
 
@@ -129,3 +137,43 @@ print ("Thank you! Please come again soon!")
 #The total amount owed, formatted as US dollars and cents (e.g. $4.89), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
 #A friendly message thanking the customer and/or encouraging the customer to shop again - Print a friendly message 
 #The program should be able to process multiple shopping cart items of the same kind, but need not display any groupings or aggregations of those items (although it may optionally do so).
+
+
+# adapted from https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/packages/sendgrid.md
+
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var called 'SENDGRID_API_KEY'")
+MY_EMAIL_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
+
+# AUTHENTICATE
+
+sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY)
+#Load_env is telling code to pull from env folder. we don't want sensitive info in our code
+
+# COMPILE REQUEST PARAMETERS (PREPARE THE EMAIL)
+
+from_email = Email(MY_EMAIL_ADDRESS)
+to_email = Email(MY_EMAIL_ADDRESS)
+subject = "Your Receipt from AMC Market"
+message_text = ("Hello, This is a message from your AMC Market.See below for your receipt. Thank you for shopping at our Market and come again!" + " " + 
+"........." + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])) + " " +
+"Subtotal: " + str('${:,.2f}'.format(total_price)) + ", " + "NYC Sales Tax: " + str('${:,.2f}'.format((tax)) + ", " + "Total: " + str('${:,.2f}'.format(total_price + tax))))
+content = Content("text/plain", message_text)
+mail = Mail(from_email, subject, to_email, content)
+
+# ISSUE REQUEST (SEND EMAIL)
+
+response = sg.client.mail.send.post(request_body=mail.get())
+
+# PARSE RESPONSE
+
+pp = pprint.PrettyPrinter(indent=4)
+
+print("----------------------")
+print("EMAIL")
+print("----------------------")
+print("RESPONSE: ", type(response))
+print("STATUS:", response.status_code) #> 202 means success
+print("HEADERS:")
+pp.pprint(dict(response.headers))
+print("BODY:")
+print(response.body) #> this might be empty. it's ok.)
