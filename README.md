@@ -3,12 +3,12 @@
 Create a receipt based on products, price, and produce the total price of the shopping cart
 
 #Installation/Repo Setup
-Required to clone or download repository created from https://github.com/eocello10/shopping-cart-project, then navigate into project repository by entering code into command line:
+- Required to clone or download repository created from https://github.com/eocello10/shopping-cart-project, then navigate into project repository by entering code into command line:
 '''sh
 cd shopping-cart-project #need to copy folder on local drive
 '''
-Insert product list based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017 as seen below 
-products = [
+- Insert product list based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017 as seen below 
+- products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
     {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
@@ -32,7 +32,7 @@ products = [
 ] 
 
 #Installation/Usage
-reate and activate a new Anaconda virtual environment:
+- Create and activate a new Anaconda virtual environment:
 
 conda create -n shopping-env python=3.7 # (first time only)
 conda activate shopping-env
@@ -43,39 +43,37 @@ From within the virtual environment, install the pytest package:
 
 pip install pytest
 
-After complete you can begin to run the code in your command line by copying and pasting the location of your shopping cart repo on your local drive and open in VS Text code then run the program:
+- After complete you can begin to run the code in your command line by copying and pasting the location of your shopping cart repo on your local drive and open in VS Text code then run the program:
 
 python shopping_cart-project.py
 
 
 ##Requirements
-total_price = 0 - Starting point 
-Selected_ids = []
-Valid_ids = []
-for i in products:
+- total_price = 0 - Starting point 
+- Selected_ids = []
+- Valid_ids = []
+- for i in products:
     Valid_ids.append(i["id"])
     - Use the for loop in order to make this valid_ids item more dynamic in the below code. Allows me to determine whether something is invalid or not
-while True:
-    Selected_ID = input("Please enter a product ID or Donec if there are no more products:")
-    if Selected_ID.lower() == "done": 
+- while True:
+    - Selected_ID = input("Please enter a product ID or Donec if there are no more products:")
+    - if Selected_ID.lower() == "done": 
         - This allows me to esnure that if any capital letters are written in done (i.e. DONE or Done) the code will recognize this is done and break to produce the receipt
         break
-    while Selected_ID not in str(Valid_ids): # either make an elif or add another break
+    - while Selected_ID not in str(Valid_ids): # either make an elif or add another break
         print ("Invalid ID. Please enter a valid ID.")
         break
-    else:
+    - else:
         selected_ids.append(Selected_ID) - Create an append..
  - This code asks for user to input a value. The goal is to have user input a valid value and produce a result. This code will not allow invalid results(produce a message when this happens). When the user inputs, done, the code will produce a break and produce the receipt
  - Thus, we can move our loop to the display section of our code and create a for Selected_ID in selected_ids: the nthe loop 
     -Create a loop to allow for multiple product IDs to be entered. Must create a break which allows for the loop to end. In our case, use an if statement tas seen in above code
 
-matching_product  = [p for p in products if p["id"] == Selected_ID] - This is a list comprehension that is required to be generated in order to pull from our products
+- matching_product  = [p for p in products if p["id"] == Selected_ID] - This is a list comprehension that is required to be generated in order to pull from our products
 
 - we are comparing different data types - Integer of entering products ID and a string version of 9. Have to make them match in order to produce a proper result
 
-print (matching_product)
-
-print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
+- print("Selected Product: " + matching_product["name"] + " " + str(matching_product ["price"]))
 - At a certain point you will need to remove this as we do not want to print out the select product each time. Rather we need to see this as part of the receipt
 -To format price use the code: '${:,.2f}'.format and this will format any of your prices to two decimals
 
@@ -83,13 +81,13 @@ print("Selected Product: " + matching_product["name"] + " " + str(matching_produ
 
 - You need to keep running total within loop  - To do this define variable (i.e. total_price) above loop and within loop. After we find matching product we can accumulate value of total price and keep adding product price to total until user selects done
 #Code:
-for Selected_ID in selected_ids:
+- for Selected_ID in selected_ids:
     matching_products  = [p for p in products if str(p["id"]) == str(Selected_ID)] 
     matching_product = matching_products[0]
     total_price = total_price + matching_product ["price"]
     print("... " + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])))
 
--Prices - Subtotal, Tax, and Total - Need to format using '${:,.2f}'.format'
+- Prices - Subtotal, Tax, and Total - Need to format using '${:,.2f}'.format'
     - Subtotal = sum of the total prices of the products
     - Tax = (total_price*.0875)
     - Total = Subtotal + Tax 
@@ -104,45 +102,45 @@ https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/m
 #Email Notification
 - Need to create a sendgrid accout/receive an API key. Along with this you must create an env file with the below information
 
-SENDGRID_API_KEY="API_Key" # use your own API Key!"
-MY_EMAIL_ADDRESS="My_email" # use the email address you associated with the SendGrid service
+- SENDGRID_API_KEY="API_Key" # use your own API Key!"
+- MY_EMAIL_ADDRESS="My_email" # use the email address you associated with the SendGrid service
 
-SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var called 'SENDGRID_API_KEY'")
-MY_EMAIL_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
+- SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var called 'SENDGRID_API_KEY'")
+- MY_EMAIL_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
 
 # AUTHENTICATE
 
-sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY)
+- sg = sendgrid.SendGridAPIClient(apikey=SENDGRID_API_KEY)
 #Load_env is telling code to pull from env folder. we don't want sensitive info in our code
 
 # COMPILE REQUEST PARAMETERS (PREPARE THE EMAIL)
 
-from_email = Email(MY_EMAIL_ADDRESS)
-to_email = Email(MY_EMAIL_ADDRESS)
-subject = "Your Receipt from AMC Market"
-message_text = ("Hello, This is a message from your AMC Market.See below for your receipt. Thank you for shopping at our Market and come again!" + " " + 
+- from_email = Email(MY_EMAIL_ADDRESS)
+- to_email = Email(MY_EMAIL_ADDRESS)
+- subject = "Your Receipt from AMC Market"
+- message_text = ("Hello, This is a message from your AMC Market.See below for your receipt. Thank you for shopping at our Market and come again!" + " " + 
 "........." + matching_product["name"] + " " + str('${:,.2f}'.format(matching_product["price"])) + " " +
 "Subtotal: " + str('${:,.2f}'.format(total_price)) + ", " + "NYC Sales Tax: " + str('${:,.2f}'.format((tax)) + ", " + "Total: " + str('${:,.2f}'.format(total_price + tax))))
-content = Content("text/plain", message_text)
-mail = Mail(from_email, subject, to_email, content)
-- As can be seend I utilized the code to produce products/prices in the my message section
+- content = Content("text/plain", message_text)
+- mail = Mail(from_email, subject, to_email, content)
+- As can be seen I utilized the code to produce products/prices in the my message section
 
 # ISSUE REQUEST (SEND EMAIL)
 
-response = sg.client.mail.send.post(request_body=mail.get())
+- response = sg.client.mail.send.post(request_body=mail.get())
 
-# PARSE RESPONSE
+# PARSE RESPONSE - in python code
 
-pp = pprint.PrettyPrinter(indent=4)
+- pp = pprint.PrettyPrinter(indent=4)
 
-print("----------------------")
-print("EMAIL")
-print("----------------------")
-print("RESPONSE: ", type(response))
-print("STATUS:", response.status_code) #> 202 means success
-print("HEADERS:")
-pp.pprint(dict(response.headers))
-print("BODY:")
-print(response.body) #> this might be empty. it's ok.)
+- print("----------------------")
+- print("EMAIL")
+- print("----------------------")
+- print("RESPONSE: ", type(response))
+- print("STATUS:", response.status_code) #> 202 means success
+- print("HEADERS:")
+- pp.pprint(dict(response.headers))
+- print("BODY:")
+- print(response.body) #> this might be empty. it's ok.)
 
-IMPORTANT: Continue to test your code to ensure proper results are being produced. You can either automate this or run it manually.
+- IMPORTANT: Continue to test your code to ensure proper results are being produced. You can either automate this or run it manually.
